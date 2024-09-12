@@ -1,9 +1,10 @@
 import { Box, Link, Paper, SvgIcon, Typography, useTheme } from "@mui/material";
-import { styled } from "@mui/material/styles";
+// import { styled } from "@mui/material/styles";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import lendAndBorrowIcon from "src/assets/icons/lendAndBorrow.svg?react";
-import Logo from "src/assets/logo-white.png";
+import Logo from "src/assets/logo-black.png";
+import LogoWhite from "src/assets/logo-white.png";
 import NavItem from "src/components/library/NavItem";
 import { DecimalBigNumber } from "src/helpers/DecimalBigNumber/DecimalBigNumber";
 import { Environment } from "src/helpers/environment/Environment/Environment";
@@ -17,17 +18,23 @@ const classes = {
   gray: `${PREFIX}-gray`,
 };
 
-const StyledBox = styled(Box)(({ theme }) => ({
-  [`& .${classes.gray}`]: {
-    color: theme.colors.gray[90],
-  },
-}));
+// const StyledBox = styled(Box)(({ theme }) => ({
+//   [`& .${classes.gray}`]: {
+//     color: theme.colors.gray[90],
+//   },
+// }));
+
+const logoStyle = {
+  objectFit: "contain",
+  width: "200px",
+  height: "100px",
+} as any;
 
 const NavContent: React.VFC = () => {
-  const theme = useTheme();
+  const theme = useTheme() as any;
   const { chain = { id: 1 } } = useNetwork();
   const networks = useTestableNetworks();
-
+  console.log(theme, "theme");
   const protocolMetricsEnabled = Boolean(Environment.getWundergraphNodeUrl());
   return (
     <Paper className="dapp-sidebar">
@@ -35,15 +42,11 @@ const NavContent: React.VFC = () => {
         <div className="dapp-menu-top">
           <Box className="branding-header">
             <Link href="/" rel="noopener noreferrer">
-              <img
-                style={{
-                  objectFit: "contain",
-                  width: "200px",
-                  height: "100px",
-                }}
-                src={Logo}
-                alt=""
-              />
+              {theme.palette.mode === "dark" ? (
+                <img style={logoStyle} src={LogoWhite} alt="" />
+              ) : (
+                <img style={logoStyle} src={Logo} alt="" />
+              )}
             </Link>
           </Box>
 
