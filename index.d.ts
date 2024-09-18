@@ -1,5 +1,6 @@
 declare module "*.jpg";
 declare module "*.png";
-declare module "*.svg";
-
-export default global;
+declare module "*.svg" {
+  const content: string;
+  export default content;
+}

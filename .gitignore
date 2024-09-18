@@ -12,6 +12,8 @@ packages/react-app/src/contracts/*
 !packages/react-app/src/contracts/contracts.js
 packages/hardhat/cache
 
+docker/**/data
+
 packages/subgraph/config/config.json
 tenderly.yaml
 
@@ -22,9 +24,6 @@ tenderly.yaml
 
 # testing
 coverage
-tests/e2e/videos
-base-report.json
-branch-report.json
 
 # production
 build
@@ -41,15 +40,4 @@ yarn-error.log*
 # Integrated development environnements
 .idea
 *.sublime-*
-
-# Hardhat
-cache
-
 .vscode
-
-src/typechain
-
-# We use Yarn - prevent this file from being committed to avoid confusion
-package-lock.json
-
-tmp/

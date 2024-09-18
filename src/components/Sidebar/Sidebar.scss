@@ -1,5 +1,5 @@
 .sidebar {
-  min-width: 264px;
+  min-width: 280px;
   z-index: 2;
   border-radius: 0 !important;
 }
@@ -12,11 +12,8 @@
   height: 100%;
   overflow: hidden;
   border-radius: 0 !important;
-}
-
-.menu-divider {
-  margin-top: -4.5px;
-  margin-bottom: 7.5px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .dapp-sidebar-inner {
@@ -32,22 +29,14 @@
   width: 100%;
   align-items: center;
   text-decoration: none;
-  margin: 54px 0 52px 0;
+  margin: 30px 0 10px 0;
   .branding-header-icon {
     width: 50px;
     display: block;
     margin: 0 auto;
   }
-}
-
-.wallet-link {
-  margin: 10px;
-  display: flex;
-  align-items: center;
-  .avatar {
-    margin-right: 8px;
-    height: 20px;
-    border-radius: 100px;
+  .wallet-link {
+    margin: 10px;
   }
 }
 
@@ -55,7 +44,7 @@
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
-  margin-bottom: 10px;
+  margin-bottom: 33px;
   min-height: max-content;
   .dapp-nav {
     display: flex;
@@ -67,81 +56,66 @@
   height: 40vh;
   min-height: 30vh;
 }
-.dapp-menu-data.discounts {
-  display: flex;
-}
 
 .dapp-menu-links {
   min-height: 35vh;
+  display: flex;
   align-items: center;
+}
+.dapp-nav a {
+  margin-top: 0.7rem;
+  margin-left: 33px;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  svg {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    vertical-align: -4px;
+  }
+}
+
+.dapp-menu-external-links {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin-left: 33px;
+  h6 {
+    display: flex;
+    align-self: center;
+  }
+  a {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  a svg {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    vertical-align: middle;
+  }
 }
 
 .bond-discounts {
   text-align: left;
   color: #999999;
-  padding-left: 26px;
-  margin-top: 8px;
-  a {
-    margin-top: 0.7rem;
-    margin-left: 33px;
-    align-items: center;
-    margin-bottom: 0.5rem;
-  }
-
-  .discounts-accordion {
-    backdrop-filter: none;
-    background-color: inherit;
-    margin: 12px 0;
-
-    &:before {
-      display: none;
-    }
-
-    .MuiAccordionSummary-root {
-      padding: 0;
-      justify-content: space-between;
-      min-height: auto;
-    }
-
-    .MuiAccordionSummary-content {
-      display: block;
-      margin: 0;
-
-      .MuiTypography-body2 {
-        color: #999999;
-        margin-left: 33px;
-      }
-    }
-
-    .MuiAccordionDetails-root {
-      padding: 0;
-      display: block;
-
-      .bond {
-        display: block;
-        padding: unset;
-        margin-bottom: 0 0 1px 0;
-        text-decoration: none !important;
-        .bond-pair-roi {
-          float: right;
-          margin-left: 33px;
-        }
-      }
-    }
-  }
-}
-
-.give-sub-menus {
-  text-align: left;
   padding-left: 33px;
+  margin-top: 8px;
   > p {
     margin-left: 33px;
   }
-  .give-option {
+  .bond {
     display: block;
     padding: unset;
     margin-bottom: 0 0 1px 0;
-    margin-left: 33px;
+    text-decoration: none !important;
+    .bond-pair-roi {
+      float: right;
+      margin-left: 33px;
+    }
   }
 }
 
@@ -165,6 +139,26 @@
   .dapp-menu-links {
     flex-flow: row !important;
     justify-content: center !important;
+  }
+  .dapp-menu-external-links {
+    padding-top: 3em;
+    line-height: 200% !important;
+    justify-content: center;
+  }
+  .dapp-nav,
+  .dapp-menu-external-links {
+    flex-flow: column !important;
+    justify-content: flex-start;
+    margin: auto;
+    a {
+      padding: 0;
+      svg {
+        align-self: center;
+      }
+    }
+  }
+  .dapp-menu-external-links a {
+    justify-content: left;
   }
   .dapp-nav {
     .dapp-menu-data.discounts {

@@ -1,385 +1,283 @@
-import { switchClasses, tabClasses } from "@mui/material";
-import { createTheme } from "@mui/material/styles";
-import { deepmerge } from "@mui/utils";
-import { darkPalette } from "src/themes/darkPalette";
-import fonts from "src/themes/fonts";
-import commonSettings from "src/themes/global.js";
-import { lightPalette as colors } from "src/themes/lightPalette";
+import { createTheme, responsiveFontSizes } from "@material-ui/core/styles";
+import fonts from "./fonts";
+import commonSettings from "./global.js";
 
 const lightTheme = {
-  gridButtonHoverBackground: "rgba(118, 130, 153, 0.2)",
-  gridButtonActiveBackground: "rgba(118, 130, 153, 0.7)",
-  switchBg: "#FCFCFC",
+  color: "#253449",
+  gold: "#F8CC82",
+  gray: "#A3A3A3",
+  blueish_gray: "#768299",
+  textHighlightColor: "#93AEBC", // "#F4D092",
+  backgroundColor: "#AFCDE9",
+  // background:
+  // "radial-gradient(circle at 25% 0%, rgba(227,255,240,.5), rgba(227,255,240,0) 50%), radial-gradient(circle at 80% 80%, rgba(131,165,203,.5), rgba(131,165,203,0) 50%)",
+  background: "linear-gradient(180deg, #AFCDE9 1%, #F7FBE7 100%)",
+  paperBg: "rgba(255, 255, 255, 0.6)",
+  modalBg: "#FAFAFAEF",
+  popoverBg: "rgba(255, 255, 255, 0.95)",
+  menuBg: "rgba(255, 255, 255, 0.5)",
+  backdropBg: "rgba(200, 200, 200, 0.4)",
+  largeTextColor: "#759AAE",
+  activeLinkColor: "#222222",
+  activeLinkSvgColor: "invert(64%) sepia(11%) saturate(934%) hue-rotate(157deg) brightness(90%) contrast(86%)",
+  // primaryButtonBG: "#759AAE",
+  primaryButtonBG: "#93AEBC",
+  primaryButtonHoverBG: "#759AAE",
+  // these need fixing
+  primaryButtonHoverColor: "#333333",
+  secondaryButtonHoverBG: "rgba(54, 56, 64, 1)",
+  outlinedPrimaryButtonHoverBG: "#F8CC82",
+  outlinedPrimaryButtonHoverColor: "#333333",
+  outlinedSecondaryButtonHoverBG: "#FCFCFC",
+  outlinedSecondaryButtonHoverColor: "#333333",
+  containedSecondaryButtonHoverBG: "#33333333",
+  graphStrokeColor: "rgba(37, 52, 73, .2)",
 };
 
-export const light = createTheme(
-  deepmerge(
+export const light = responsiveFontSizes(
+  createTheme(
     {
-      colors,
+      primary: {
+        main: lightTheme.color,
+      },
       palette: {
-        mode: "light",
-        contrastText: colors.gray[10],
+        type: "light",
+        background: {
+          default: lightTheme.backgroundColor,
+          paper: lightTheme.paperBg,
+        },
+        contrastText: lightTheme.color,
         primary: {
-          main: colors.gray[10],
+          main: lightTheme.color,
         },
         neutral: {
-          main: colors.gray[10],
-          secondary: colors.gray[600],
+          main: lightTheme.color,
+          secondary: lightTheme.gray,
         },
         text: {
-          primary: colors.gray[10],
-          secondary: colors.gray[40],
+          primary: lightTheme.color,
+          secondary: lightTheme.blueish_gray,
         },
-        graphStrokeColor: "rgba(37, 52, 73, 0.2)",
-        error: {
-          main: colors.feedback.error,
-        },
-        info: {
-          main: colors.feedback.userFeedback,
-        },
-        success: {
-          main: colors.feedback.success,
-        },
-        warning: {
-          main: colors.feedback.warning,
+        graphStrokeColor: lightTheme.graphStrokeColor,
+      },
+      typography: {
+        fontFamily: "Square",
+      },
+      props: {
+        MuiSvgIcon: {
+          htmlColor: lightTheme.color,
         },
       },
-      components: {
+      overrides: {
         MuiCssBaseline: {
-          styleOverrides: `
-            ${fonts}
-            body {
-              background-color:"#FCF7EF";
-            }
-            `,
-        },
-        MuiSwitch: {
-          styleOverrides: {
-            switchBase: {
-              "&:hover": {
-                backgroundColor: "transparent",
-              },
-            },
-            colorPrimary: {
-              color: colors.gray[10],
-              [`&.${switchClasses["checked"]}`]: {
-                color: lightTheme.switchBg,
-                [`& + ${switchClasses["track"]}`]: {
-                  backgroundColor: colors.gray[10],
-                  borderColor: colors.gray[10],
-                },
-                "&:hover": {
-                  backgroundColor: "transparent",
-                },
-              },
-            },
-            track: {
-              border: `1px solid ${colors.gray[10]}`,
-              backgroundColor: lightTheme.switchBg,
-            },
-          },
-        },
-        MuiLinearProgress: {
-          styleOverrides: {
-            root: {
-              height: 9,
-              borderRadius: 4,
-            },
-            colorPrimary: {
-              backgroundColor: colors.gray[500],
-            },
-            barColorPrimary: {
-              backgroundColor: colors.primary[300],
+          "@global": {
+            "@font-face": fonts,
+            body: {
+              background: lightTheme.background,
             },
           },
         },
         MuiPaper: {
-          styleOverrides: {
-            root: {
-              background: "transparent",
-              "&.ohm-card": {
-                background: "transparent",
-              },
-              "&.MuiPaper-root&.info-tooltip,  &.MuiPaper-root&.tooltip-container": {
-                background: colors.gray[700],
-              },
+          root: {
+            backgroundColor: lightTheme.paperBg,
+            "&.ohm-card": {
+              backgroundColor: lightTheme.paperBg,
             },
-          },
-        },
-        MuiModal: {
-          styleOverrides: {
-            root: {
-              ".Paper-root": {
-                background: colors.gray[700],
-              },
+            "&.ohm-modal": {
+              backgroundColor: lightTheme.modalBg,
             },
-          },
-        },
-        MuiDialog: {
-          styleOverrides: {
-            root: {
-              "& .MuiPaper-root": {
-                background: colors.gray[700],
-              },
+            "&.ohm-menu": {
+              backgroundColor: lightTheme.menuBg,
+              backdropFilter: "blur(33px)",
+            },
+            "&.ohm-popover": {
+              backgroundColor: lightTheme.popoverBg,
+              color: lightTheme.color,
+              backdropFilter: "blur(15px)",
             },
           },
         },
         MuiDrawer: {
-          styleOverrides: {
-            paper: {
-              backgroundColor: colors.gray[700],
-              zIndex: 7,
-            },
-          },
-        },
-        MuiAlert: {
-          styleOverrides: {
-            root: {
-              backgroundImage: "none",
-            },
-          },
-        },
-        MuiTabs: {
-          styleOverrides: {
-            root: {
-              "& .MuiLink-root": {
-                color: colors.gray[40],
-                "&.active": {
-                  color: colors.gray[10],
-                },
-              },
-            },
+          paper: {
+            backgroundColor: lightTheme.backdropBg,
+            zIndex: 7,
           },
         },
         MuiBackdrop: {
-          styleOverrides: {
-            root: {
-              backgroundColor: "rgba(255,255,255, 0)",
-            },
+          root: {
+            backgroundColor: "rgba(255,255,255, 0)",
           },
         },
         MuiLink: {
-          styleOverrides: {
-            root: {
-              color: colors.gray[10],
-              "&:hover": {
-                color: colors.gray[500],
-                textDecoration: "none",
-                "&.active": {
-                  color: colors.gray[10],
-                },
-              },
+          root: {
+            color: lightTheme.color,
+            "&:hover": {
+              color: lightTheme.textHighlightColor,
+              textDecoration: "none",
               "&.active": {
-                color: colors.gray[10],
-                textDecoration: "underline",
+                color: lightTheme.color,
               },
-              "@media (hover:none)": {
-                "&:hover": {
-                  color: colors.gray[500],
-                  textDecoration: "none",
-                  backgroundColor: "#00000000 !important",
-                },
-                "&:focus": {
-                  color: colors.gray[500],
-                  backgroundColor: "#00000000 !important",
-                },
+            },
+            "&.active": {
+              color: lightTheme.color,
+              textDecoration: "underline",
+            },
+            "@media (hover:none)": {
+              "&:hover": {
+                color: lightTheme.textHighlightColor,
+                textDecoration: "none",
+                backgroundColor: "#00000000 !important",
+              },
+              "&:focus": {
+                color: lightTheme.textHighlightColor,
+                backgroundColor: "#00000000 !important",
               },
             },
           },
         },
         MuiTableCell: {
-          styleOverrides: {
-            root: {
-              color: colors.gray[10],
-            },
+          root: {
+            color: lightTheme.color,
           },
         },
         MuiInputBase: {
-          styleOverrides: {
-            root: {
-              color: colors.gray[10],
-            },
+          root: {
+            color: lightTheme.color,
           },
         },
         MuiOutlinedInput: {
-          styleOverrides: {
-            notchedOutline: {
-              borderColor: `${colors.gray[10]} !important`,
-              "&:hover": {
-                borderColor: `${colors.gray[10]} !important`,
-              },
+          notchedOutline: {
+            borderColor: `${lightTheme.color} !important`,
+            "&:hover": {
+              borderColor: `${lightTheme.color} !important`,
             },
           },
         },
         MuiTab: {
-          styleOverrides: {
-            textColorPrimary: {
-              color: colors.gray[40],
-              [`&.${tabClasses["selected"]}`]: {
-                color: colors.gray[10],
-              },
-            },
-            root: {
-              "&.Mui-selected": {
-                textDecoration: "underline",
-                textUnderlineOffset: "10px",
-                textDecorationThickness: "3px",
-              },
-              "&:hover": {
-                color: colors.gray[500],
-                textDecoration: "underline",
-                textUnderlineOffset: "10px",
-                textDecorationThickness: "3px",
-              },
+          textColorPrimary: {
+            color: lightTheme.blueish_gray,
+            "&$selected": {
+              color: lightTheme.color,
             },
           },
         },
         PrivateTabIndicator: {
-          styleOverrides: {
-            colorPrimary: {
-              backgroundColor: colors.gray[10],
-            },
+          colorPrimary: {
+            backgroundColor: lightTheme.color,
           },
         },
         MuiToggleButton: {
-          styleOverrides: {
-            root: {
-              background: colors.paper.card,
+          root: {
+            backgroundColor: lightTheme.paperBg,
+            "&:hover": {
+              color: lightTheme.color,
+              backgroundColor: lightTheme.containedSecondaryButtonHoverBG,
+            },
+            selected: {
+              backgroundColor: lightTheme.containedSecondaryButtonHoverBG,
+            },
+            "@media (hover:none)": {
               "&:hover": {
-                background: colors.paper.cardHover,
+                color: lightTheme.color,
+                backgroundColor: lightTheme.paperBg,
               },
-              "@media (hover:none)": {
-                "&:hover": {
-                  background: colors.paper.cardHover,
-                },
-                "&:focus": {
-                  background: colors.paper.cardHover,
-                },
+              "&:focus": {
+                color: lightTheme.color,
+                backgroundColor: lightTheme.paperBg,
               },
             },
           },
         },
         MuiIconButton: {
-          styleOverrides: {
-            root: {
-              "&:hover": {
-                backgroundColor: colors.gray[500],
-              },
-              "@media (hover:none)": {
-                "&:hover": {
-                  color: colors.gray[10],
-                  backgroundColor: colors.gray[500],
-                },
-                "&:focus": {
-                  color: colors.gray[10],
-                  backgroundColor: colors.gray[500],
-                },
-              },
+          root: {
+            "&:hover": {
+              backgroundColor: lightTheme.containedSecondaryButtonHoverBG,
             },
-          },
-        },
-        MuiSelect: {
-          styleOverrides: {
-            select: {
-              color: "#93AEBC",
+            "@media (hover:none)": {
+              "&:hover": {
+                color: lightTheme.color,
+                backgroundColor: lightTheme.containedSecondaryButtonHoverBG,
+              },
+              "&:focus": {
+                color: lightTheme.color,
+                backgroundColor: lightTheme.containedSecondaryButtonHoverBG,
+              },
             },
           },
         },
         MuiButton: {
-          styleOverrides: {
-            containedPrimary: {
-              color: colors.gray[40],
-              backgroundColor: colors.primary[300],
-              "&.Mui-disabled": {
-                backgroundColor: colors.primary[300],
-              },
-              "&:hover": {
-                backgroundColor: colors.primary[100],
-              },
+          containedPrimary: {
+            color: "#FCFCFC",
+            backgroundColor: lightTheme.primaryButtonBG,
+            "&:hover": {
+              backgroundColor: lightTheme.primaryButtonHoverBG,
+              color: lightTheme.primaryButtonHoverColor,
             },
-            containedSecondary: {
-              height: "39px",
-              background: colors.paper.card,
-              color: colors.gray[10],
-              fontWeight: 500,
+            "@media (hover:none)": {
+              color: lightTheme.color,
+              backgroundColor: lightTheme.primaryButtonBG,
               "&:hover": {
-                background: `${colors.paper.cardHover} !important`,
-              },
-              "&:active": {
-                background: colors.paper.cardHover,
-              },
-              "&:focus": {
-                background: colors.paper.cardHover,
-              },
-              "@media (hover:none)": {
-                color: colors.gray[10],
-                background: colors.paper.card,
-                "&:hover": {
-                  background: `${colors.paper.cardHover} !important`,
-                },
-              },
-            },
-            outlinedPrimary: {
-              color: colors.gray[90],
-              borderColor: colors.gray[90],
-              "&.Mui-disabled": {
-                color: colors.gray[90],
-                borderColor: colors.gray[90],
-              },
-              "&:hover": {
-                color: colors.gray[700],
-                backgroundColor: colors.gray[90],
-                borderColor: colors.gray[90],
-              },
-              "@media (hover:none)": {
-                color: darkPalette.gray[700],
-                borderColor: darkPalette.gray[700],
-                "&:hover": {
-                  color: `${colors.gray[600]} !important`,
-                  backgroundColor: `${darkPalette.gray[10]} !important`,
-                },
-              },
-            },
-            outlinedSecondary: {
-              color: colors.gray[40],
-              borderColor: colors.gray[40],
-              "&.Mui-disabled": {
-                color: colors.gray[40],
-                borderColor: colors.gray[40],
-              },
-              "&:hover": {
-                backgroundColor: darkPalette.gray[10],
-                borderColor: darkPalette.gray[10],
-              },
-            },
-            textPrimary: {
-              color: colors.gray[600],
-              "&:hover": {
-                color: colors.gray[500],
-                backgroundColor: "#00000000",
-              },
-              "&:active": {
-                color: colors.primary[300],
-                borderBottom: "#F8CC82",
-              },
-            },
-            textSecondary: {
-              color: colors.gray[10],
-              "&:hover": {
-                color: colors.gray[500],
+                backgroundColor: lightTheme.primaryButtonHoverBG,
               },
             },
           },
-        },
-        MuiTypography: {
-          styleOverrides: {
-            root: {
-              "&.grid-message-typography": {
-                color: colors.gray[40],
+          containedSecondary: {
+            color: lightTheme.color,
+            backgroundColor: lightTheme.paperBg,
+            "&:hover": {
+              color: "#FCFCFC",
+              backgroundColor: `${lightTheme.containedSecondaryButtonHoverBG} !important`,
+            },
+            "@media (hover:none)": {
+              color: lightTheme.color,
+              backgroundColor: lightTheme.paperBg,
+              "&:hover": {
+                color: "#FCFCFC",
+                backgroundColor: `${lightTheme.containedSecondaryButtonHoverBG} !important`,
               },
-              "&.chain-highlight": {
-                color: colors.gray[10],
+            },
+          },
+          outlinedPrimary: {
+            color: lightTheme.primaryButtonBG,
+            borderColor: lightTheme.primaryButtonBG,
+            "&:hover": {
+              color: lightTheme.gold,
+              backgroundColor: lightTheme.primaryButtonHoverBG,
+              borderColor: lightTheme.primaryButtonBG,
+            },
+            "@media (hover:none)": {
+              color: lightTheme.primaryButtonBG,
+              borderColor: lightTheme.primaryButtonBG,
+              "&:hover": {
+                color: `${lightTheme.gold} !important`,
+                backgroundColor: `${lightTheme.primaryButtonBG} !important`,
               },
+            },
+          },
+          outlinedSecondary: {
+            color: lightTheme.color,
+            borderColor: lightTheme.color,
+            "&:hover": {
+              color: lightTheme.outlinedSecondaryButtonHoverColor,
+              backgroundColor: lightTheme.outlinedSecondaryButtonHoverBG,
+              borderColor: "#333333",
+            },
+          },
+          textPrimary: {
+            color: lightTheme.gray,
+            "&:hover": {
+              color: lightTheme.textHighlightColor,
+              backgroundColor: "#00000000",
+            },
+            "&:active": {
+              color: lightTheme.gold,
+              borderBottom: "#F8CC82",
+            },
+          },
+          textSecondary: {
+            color: lightTheme.color,
+            "&:hover": {
+              color: lightTheme.textHighlightColor,
             },
           },
         },

@@ -1,13 +1,13 @@
 ---
-name: Bug Report
+name: Bug report
 about: Create a report to help us improve
-title: "[BUG] "
-labels: bug, triage
+title: ''
+labels: ''
 assignees: ''
 
 ---
 
-**Describe the Bug**
+**Describe the bug**
 A clear and concise description of what the bug is.
 
 **To Reproduce**
@@ -17,7 +17,7 @@ Steps to reproduce the behavior:
 3. Scroll down to '....'
 4. See error
 
-**Expected Behavior**
+**Expected behavior**
 A clear and concise description of what you expected to happen.
 
 **Workarounds (if any)**
@@ -37,5 +37,5 @@ If applicable, add screenshots to help explain your problem.
  - Browser [e.g. stock browser, safari]
  - Version [e.g. 22]
 
-**Additional Context**
+**Additional context**
 Add any other context about the problem here.
