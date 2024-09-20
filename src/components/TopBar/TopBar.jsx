@@ -5,7 +5,7 @@ import { ReactComponent as MenuIcon } from "../../assets/icons/hamburger.svg";
 import OhmMenu from "./OhmMenu.jsx";
 import ThemeSwitcher from "./ThemeSwitch.jsx";
 import ConnectMenu from "./ConnectMenu.jsx";
-import "./topbar.scss";
+import "./top-bar.scss";
 
 const useStyles = makeStyles(theme => ({
   appBar: {

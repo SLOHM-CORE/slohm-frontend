@@ -12,7 +12,7 @@ import { useAddress, useWeb3Context } from "src/hooks/web3Context";
 import useBonds from "../../hooks/Bonds";
 import { Paper, Link, Box, Typography, SvgIcon } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
-import "./sidebar.scss";
+import "./sidebar-old.scss";
 import Logo from "../../assets/logo-black.png";
 import LogoWhite from "../../assets/logo-white.png";
 

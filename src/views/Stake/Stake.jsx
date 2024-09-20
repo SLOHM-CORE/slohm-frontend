@@ -21,7 +21,7 @@ import TabPanel from "../../components/TabPanel";
 import { getOhmTokenImage, getTokenImage, trim } from "../../helpers";
 import { changeApproval, changeStake } from "../../slices/StakeThunk";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import "./stake.scss";
+import "./stake-old.scss";
 import { useWeb3Context } from "src/hooks/web3Context";
 import { isPendingTxn, txnButtonText } from "src/slices/PendingTxnsSlice";
 import { Skeleton } from "@material-ui/lab";
@@ -127,7 +127,7 @@ function Stake() {
       if (token === "sohm") return unstakeAllowance > 0;
       return 0;
     },
-    [stakeAllowance],
+    [stakeAllowance]
   );
 
   let modalButton = [];
@@ -135,7 +135,7 @@ function Stake() {
   modalButton.push(
     <Button variant="contained" color="primary" className="connect-button" onClick={connect} key={1}>
       Connect Wallet
-    </Button>,
+    </Button>
   );
 
   const changeView = (event, newView) => {
@@ -147,7 +147,7 @@ function Stake() {
       .filter(Boolean)
       .map(balance => Number(balance))
       .reduce((a, b) => a + b, 0)
-      .toFixed(4),
+      .toFixed(4)
   );
   const trimmedStakingAPY = trim(stakingAPY * 100, 1);
   const stakingRebasePercentage = trim(stakingRebase * 100, 4);
