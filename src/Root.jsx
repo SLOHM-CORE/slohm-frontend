@@ -13,6 +13,7 @@ export default class Root extends Component {
   }
 
   render() {
+    console.log("Start");
     return (
       <Web3ContextProvider>
         <Provider store={store}>
